@@ -1,13 +1,14 @@
 function [imgOut] = LPF(imgIn, filter_name, filter_order)
     %LPF lowpass filter function
-    [M,N] = size(imgIn);
+    [M,N,D] = size(imgIn);
     
     % Step 1
     P = 2 * M;
     Q = 2 * N;
 
     % Step 2 & 3 : fourier transform with padded image
-    ft = fft2(imgIn, P, Q);
+    im = im2double(imgIn);
+    ft = fft2(im, P, Q);
     
     % Step 4
     cutoff_freq = 0.05 * P;
