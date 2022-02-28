@@ -6,13 +6,13 @@ function [filter_arr] = generate_filter(p, q, cutoff_freq, name, filter_order)
     end
 
     % Setup range of variables
-    u = 0:(p-1)
-    v = 0:(q-1)
+    u = 0:(p - 1)
+    v = 0:(q - 1)
 
     % Compute the indices for use in meshgrids
-    idx = find(u > p/2)
+    idx = find(u > p / 2)
     u(idx) = u(idx) - p
-    idy = find(v > q/2)
+    idy = find(v > q / 2)
     v(idy) = v(idy) - q
 
     % Compute the meshgrid arrays
@@ -28,4 +28,5 @@ function [filter_arr] = generate_filter(p, q, cutoff_freq, name, filter_order)
         case 'gaussian'
             filter_arr = gaussian(D, cutoff_freq)
     end
+
 end
