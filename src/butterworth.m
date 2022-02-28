@@ -1,6 +1,6 @@
-function [filtered_img_arr] = butterworth(img_arr, cutoff_freq, filter_order)
-%BUTTERWORTH Transform an image array of one channel in Butterworth wise
+function [filter_arr] = butterworth(D, cutoff_freq, filter_order)
+    %BUTTERWORTH Generate Butterworth filter array
 
-
+    filter_arr = 1 / (1 + (D / cutoff_freq) ^ (2 * filter_order))
 
 end
