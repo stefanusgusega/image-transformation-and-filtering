@@ -2,6 +2,10 @@ function [imgOut] = pass_filter(imgIn, pass_type, filter_name, filter_order, cut
     %LPF lowpass filter function
     [M, N, D] = size(imgIn);
 
+    if ~(D == 1)
+        throw(MException('ImageError:sizeNotOne', 'The input image should be 1D array. Current: %dD array.', D))
+    end
+
     % Step 1
     P = 2 * M;
     Q = 2 * N;
