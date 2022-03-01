@@ -1,4 +1,4 @@
-function [imgOut] = pass_filter(imgIn, pass_type, filter_name, filter_order, cutoff_freq)
+function [imgOut] = pass_filter(imgIn, pass_type, filter_name, cutoff_freq, filter_order)
     %LPF lowpass filter function
     [M, N, D] = size(imgIn);
 
