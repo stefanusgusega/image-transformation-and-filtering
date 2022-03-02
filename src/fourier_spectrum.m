@@ -1,4 +1,4 @@
-function [F2] = fourier_spectrum(imgIn)
+function [f, F2] = fourier_spectrum(imgIn)
     % Tampilkan magnitute spektrum Fourier, mengembalikan hasil fft +
     % spectrum untuk didisplay
     [M, N, D] = size(imgIn);
