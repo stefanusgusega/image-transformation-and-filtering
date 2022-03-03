@@ -1,4 +1,4 @@
-function [imgOut] = high_boost_filter(imgIn, ampification_coef, filter_name, cutoff_freq, filter_order)
+function [imgOut] = high_boost_filter(imgIn, amplification_coef, filter_name, cutoff_freq, filter_order)
     [M, N, D] = size(imgIn);
 
     % Checking the inputs
@@ -8,8 +8,8 @@ function [imgOut] = high_boost_filter(imgIn, ampification_coef, filter_name, cut
     end
 
     % Check filter name
-    if ~(ismember(filter_name, {'ideal' 'butterworth' 'gaussian' 'high_boost'}))
-        throw(MException('FilterNameError:invalidFilterName', "Filter name defined: 'ideal', 'butetrworth', 'gaussian' or 'high_boost'. %s not defined.", filter_name))
+    if ~(ismember(filter_name, {'ideal' 'butterworth' 'gaussian'}))
+        throw(MException('FilterNameError:invalidFilterName', "Filter name defined: 'ideal', 'butetrworth' or 'gaussian'. %s not defined.", filter_name))
     end
 
     % Step 1
@@ -27,7 +27,7 @@ function [imgOut] = high_boost_filter(imgIn, ampification_coef, filter_name, cut
         case 'butterworth'
 
             if (~exist('filter_order', 'var'))
-                throw(MException('FilterOrder:variableUndefined', 'You should define filter order if using Butterworth filter.'))
+                throw(MException('FilterOrder:variableUndefined', 'You should define filter order if using Butterworth pass filter.'))
             end
 
             filter_arr = high_boost(P, Q, amplification_coef, cutoff_freq, filter_name, filter_order);
