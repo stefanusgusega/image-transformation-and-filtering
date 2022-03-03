@@ -4,9 +4,10 @@ function [freqOut] = notch_filter(freqIn, arr_x, arr_x1, arr_y, arr_y1)
     % arr_noise_y = [y1, y2, ..., yi]
     % arr_noise_y1 = [y1', y2', ..., yi']
 
-    %if ~(((size(arr_x) == size(arr_x1)) && (size(arr_x) == size(arr_y))) && (size(arr_y) == size(arr_y1)))
-    %    throw(MException('ArrayError:differentSize', 'Array of coordinates should have the same length.'))
-    %end
+    if ~(isequal(size(arr_x),size(arr_x1)) && (isequal(size(arr_x),size(arr_y))) && (isequal(size(arr_y),size(arr_y1))))
+       throw(MException('ArrayError:differentSize', 'Array of coordinates should have the same length.'))
+    end
+
     freqOut = freqIn;
     [M, N] = size(arr_x);
 
