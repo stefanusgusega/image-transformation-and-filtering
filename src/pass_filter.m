@@ -36,10 +36,10 @@ function [imgOut] = pass_filter(imgIn, pass_type, filter_name, cutoff_freq, filt
                 throw(MException('FilterOrder:variableUndefined', 'You should define filter order if using Butterworth filter.'))
             end
 
-            filter_arr = generate_filter(P, Q, cutoff_freq, filter_name, filter_order);
+            filter_arr = generate_pass_filter(P, Q, cutoff_freq, filter_name, filter_order);
 
         otherwise
-            filter_arr = generate_filter(P, Q, cutoff_freq, filter_name);
+            filter_arr = generate_pass_filter(P, Q, cutoff_freq, filter_name);
     end
 
     % high or low pass

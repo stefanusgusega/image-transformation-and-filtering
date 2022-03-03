@@ -1,5 +1,5 @@
-function [filter_arr] = generate_filter(p, q, cutoff_freq, name, filter_order)
-    %GENERATE_FILTER Generate filter
+function [filter_arr] = generate_pass_filter(p, q, cutoff_freq, name, filter_order)
+    %GENERATE_PASS_FILTER Generate filter for low pass and high pass only
 
     % Setup range of variables
     u = 0:(p - 1);
