@@ -13,8 +13,10 @@ function [imgOut] = notch(imgIn, noise_type)
 
     figure, imshow(imgIn);
 
-    % convert to freq
-    freqIn = fourier_spectrum(imgIn);
+    % transform image to freq spectrum
+    im = im2double(imgIn);
+    f = fft2(im);
+    freqIn = fftshift(f);
 
     switch noise_type
         case 'a'
