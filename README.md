@@ -15,7 +15,7 @@ We implement many operations to filter the image, such as low-pass filter, high-
 - 13518089 Annisa Rahim
 - 13518149 Stefanus Gusega Gunawan
 
-## Image Souces
+## Image Sources
 - Citra tambahan grayscale untuk LPF diambil dari A “Salt and Pepper” Noise Reduction Scheme for Digital Images Based on Support Vector Machines Classification and Regression (hindawi.com)
 - Citra tambahan berwarna untuk LPF diambil dari Salt and Pepper · Noise.jl (juliahub.com)
 - Citra tambahan grayscale untuk HPF diambil dari Stepping Into the Filter (cse442-17f.github.io)
