@@ -7,16 +7,14 @@ function [imgOut] = notch(imgIn, noise_type)
         throw(MException('ImageError:sizeNotOne', 'The input image should be 1D array. Current: %dD array.', D))
     end
 
-    if ~(noise_type)
-        noise_type = 'z';
+     if ~(ismember(noise_type, {'a' 'b' 'c'}))
+        throw(MException('NoiseTypeError:invalidNoiseType', "Filter name defined: 'a', 'b' or 'c'. %s not defined.", noise_type))
     end
 
-    %figure, imshow(imgIn);
+    % figure, imshow(imgIn);
 
     % Mengubah gambar ke ranah frekuensi
-    im = im2double(imgIn);
-    f = fft2(im);
-    freqIn = fftshift(f);
+    freqIn = fourier_spectrum(imgIn);
 
     switch noise_type
         case 'a'
@@ -37,18 +35,16 @@ function [imgOut] = notch(imgIn, noise_type)
             arr_x  = [252, 236, 218, 203, 187, 171, 155, 122, 107,  91,  75,  59,  43,  27];
             arr_x1 = [254, 238, 224, 207, 191, 175, 159, 126, 111,  95,  79,  63,  47,  31];
 
-        case 'z'
-            % ambil dari input user
-            
     end
 
     % set semua pixel pada range menjadi 0
     freqOut = notch_filter(freqIn, arr_x, arr_x1, arr_y, arr_y1);
     
-    %display_spectrum(freqIn);
-    %display_spectrum(freqOut);
+    % for checking
+    % display_spectrum(freqIn);
+    % display_spectrum(freqOut);
 
     % kembali ke ranah spasial
     imgOut = real(ifft2(ifftshift(freqOut)));
-    %figure, imshow(imgOut,[]);
+    % figure, imshow(imgOut,[]);
 end
