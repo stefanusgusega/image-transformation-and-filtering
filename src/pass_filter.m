@@ -1,5 +1,5 @@
 function [imgOut] = pass_filter(imgIn, pass_type, filter_name, cutoff_freq, filter_order)
-    %LPF lowpass filter function
+    %Pass Filter function
     [M, N, D] = size(imgIn);
 
     % Checking the inputs
@@ -15,20 +15,20 @@ function [imgOut] = pass_filter(imgIn, pass_type, filter_name, cutoff_freq, filt
 
     % Check filter name
     if ~(ismember(filter_name, {'ideal' 'butterworth' 'gaussian'}))
-        throw(MException('FilterNameError:invalidFilterName', "Filter name defined: 'ideal', 'butetrworth' or 'gaussian'. %s not defined.", filter_name))
+        throw(MException('FilterNameError:invalidFilterName', "Filter name defined: 'ideal', 'butterworth' or 'gaussian'. %s not defined.", filter_name))
     end
-
-    % Step 1
+    
+    % Step 1: set padding parameter P & Q. Umumnya P = 2M, Q = 2N
     P = 2 * M;
     Q = 2 * N;
-
-    % Step 2 & 3 : fourier transform with padded image
+ 
+    % Step 2 & 3: fourier transform with padded image
     im = im2double(imgIn);
     ft = fft2(im, P, Q);
+ 
+    % Step 4: generate filter 
 
-    % Step 4
-    % cutoff_freq = 0.05 * P;
-
+    % filter type
     switch filter_name
         case 'butterworth'
 
@@ -47,10 +47,10 @@ function [imgOut] = pass_filter(imgIn, pass_type, filter_name, cutoff_freq, filt
         filter_arr = 1 - filter_arr;
     end
 
-    % Step 5
+    % Step 5: Perkalian filter dengan image yang sudah berbentuk frekuensi 
     pf_freq = filter_arr .* ft;
 
-    % Step 6: inverse transform bagian real dari hasil lpf ke ranah semula
+    % Step 6: inverse transform bagian real dari hasil penapisan ke ranah spasial
     pf_real = real(ifft2(pf_freq));
 
     % Step 7: potong bagian selain padding
