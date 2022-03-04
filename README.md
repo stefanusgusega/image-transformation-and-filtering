@@ -16,7 +16,7 @@ We implement many operations to filter the image, such as low-pass filter, high-
 - 13518149 Stefanus Gusega Gunawan
 
 ## Image Sources
-- Citra tambahan grayscale untuk LPF diambil dari A “Salt and Pepper” Noise Reduction Scheme for Digital Images Based on Support Vector Machines Classification and Regression (hindawi.com)
-- Citra tambahan berwarna untuk LPF diambil dari Salt and Pepper · Noise.jl (juliahub.com)
-- Citra tambahan grayscale untuk HPF diambil dari Stepping Into the Filter (cse442-17f.github.io)
-- Citra tambahan berwarna untuk HPF diambil dari Finding the Edge: Canny and Sobel Detectors(Part 2) | by Saisha | SRM MIC | Medium
+- https://www.hindawi.com/journals/tswj/2014/826405/
+- https://docs.juliahub.com/Noise/qByhT/0.1.0/man/salt_pepper/
+- https://cse442-17f.github.io/Sobel-Laplacian-and-Canny-Edge-Detection-Algorithms/
+- https://medium.com/srm-mic/finding-the-edge-canny-and-sobel-detectors-part-2-2b91365e674
